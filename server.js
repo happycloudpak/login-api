@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 // Database
 //let connStr = process.env.MONGO_DB_LOGIN_API || "mongodb://admin:passw0rd@mongodb.169.56.164.245/users";
 //let connStr = "mongodb://admin:passw0rd@mongodb.169.56.164.245.nip.io/users";
-const connStr = "mongodb://admin:passw0rd@169.56.164.254/users";
+const connStr = process.env.MONGO_DB_LOGIN_API || "mongodb://admin:passw0rd@169.56.164.254/users";
 
 mongoose.Promise = global.Promise;
 mongoose.connect(connStr, {useMongoClient: true});
