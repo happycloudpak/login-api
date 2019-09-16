@@ -1,4 +1,4 @@
-def label = "hello-helm-${UUID.randomUUID().toString()}"
+def label = "login-api-${UUID.randomUUID().toString()}"
 
 /* -------- functions ---------- */
 def notifySlack(STATUS, COLOR) {
