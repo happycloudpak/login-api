@@ -5,10 +5,14 @@ var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
 
 // Database
+//let connStr = process.env.MONGO_DB_LOGIN_API || "mongodb://admin:passw0rd@mongodb.169.56.164.245/users";
+//let connStr = "mongodb://admin:passw0rd@mongodb.169.56.164.245.nip.io/users";
+const connStr = "mongodb://admin:passw0rd@169.56.164.254/users";
+
 mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGO_DB_LOGIN_API, {useMongoClient: true});
+mongoose.connect(connStr, {useMongoClient: true});
 var db = mongoose.connection;
-db.once('open', function () {
+db.once('openUri', function () {
    console.log('DB connected!');
 });
 db.on('error', function (err) {

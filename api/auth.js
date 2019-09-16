@@ -4,6 +4,8 @@ var User     = require('../models/User');
 var util     = require('../util');
 var jwt      = require('jsonwebtoken');
 
+let JWT_SECRET = util.JWT_SECRET;
+
 // login
 router.post('/login',
   function(req,res,next){
@@ -37,7 +39,7 @@ router.post('/login',
           _id : user._id,
           username: user.username
         };
-        var secretOrPrivateKey = process.env.JWT_SECRET;
+        var secretOrPrivateKey = JWT_SECRET;
         var options = {expiresIn: 60*60*24};
         jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
           if(err) return res.json(util.successFalse(err));
@@ -70,7 +72,7 @@ router.get('/refresh', util.isLoggedin,
           _id : user._id,
           username: user.username
         };
-        var secretOrPrivateKey = process.env.JWT_SECRET;
+        var secretOrPrivateKey = JWT_SECRET;
         var options = {expiresIn: 60*60*24};
         jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
           if(err) return res.json(util.successFalse(err));
