@@ -3,6 +3,7 @@ var app        = express();
 var path       = require('path');
 var mongoose   = require('mongoose');
 var bodyParser = require('body-parser');
+global.__BASEDIR = __dirname + '/';
 
 // Database
 //let connStr = process.env.MONGO_DB_LOGIN_API || "mongodb://admin:passw0rd@mongodb.169.56.164.245/users";
@@ -30,8 +31,8 @@ app.use(function (req, res, next) {
 });
 
 // API
-app.use('/api/users', require('./api/users'));
-app.use('/api/auth', require('./api/auth'));
+app.use('/api/users', require(path.join(__BASEDIR,'api/users')));
+app.use('/api/auth', require(path.join(__BASEDIR, '/api/auth')));
 
 // Server
 var port = 3000;
