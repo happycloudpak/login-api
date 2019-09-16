@@ -71,3 +71,7 @@ mongodb:
     nfs:
       server: 169.56.164.245
       path: /data/nfs/mongodb-login-api
+  livenessProbe:
+    enabled: false
+  readinessProbe:
+    enabled: false
