@@ -98,10 +98,10 @@ podTemplate(
 						echo "Helm chart exists. !"
 						if (isExist) {
 							echo "Already installed. I will upgrade it with chart file"
-							sh "helm upgrade ${releaseName} ${helmChartfile}"
+							sh "helm upgrade -f ${baseDeployDir}/config.yaml ${releaseName} ${helmChartfile}"
 						} else {
 							echo "Install with chart file !"
-							sh "helm install ${helmChartfile} --name ${releaseName} --namespace ${namespace}"
+							sh "helm install -f ${baseDeployDir}/config.yaml ${helmChartfile} --name ${releaseName} --namespace ${namespace}"
 						}	
 					} else {
 						//없는 경우는 helm repository에서 설치
@@ -136,12 +136,12 @@ podTemplate(
 						if (isExist) {
 							//upgrade
 							echo "Already installed. I will upgrade it from helm repository"
-							sh "helm upgrade ${releaseName} ${helmRepository}/${helmChartname}"
+							sh "helm upgrade -f ${baseDeployDir}/config.yaml ${releaseName} ${helmRepository}/${helmChartname}"
 							
 						} else {
 							//install
 							echo "Install from helm repository !" 
-							sh "helm install ${helmRepository}/${helmChartname} --name ${releaseName} --namespace ${namespace}"						
+							sh "helm install -f ${baseDeployDir}/config.yaml ${helmRepository}/${helmChartname} --name ${releaseName} --namespace ${namespace}"						
 						}						
 										
 					}						
