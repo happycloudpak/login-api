@@ -16,7 +16,8 @@ fullnameOverride: ""
 env:
   MONGO_DB_LOGIN_API: mongodb://admin:passw0rd@release-login-api-mongodb/users
   JWT_SECRET: MySecretKey
-
+  TOKEN_EXPIRE_TIME: 60*60*2
+  
 service:
   type: ClusterIP
   port: 3001

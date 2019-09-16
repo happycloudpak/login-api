@@ -5,7 +5,8 @@ var User     = require(path.join(__BASEDIR, 'models/User'));
 var util     = require(path.join(__BASEDIR, 'util'));
 var jwt      = require('jsonwebtoken');
 
-let JWT_SECRET = util.JWT_SECRET;
+const JWT_SECRET = util.JWT_SECRET;
+const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME || 60*60*6;
 
 // login
 router.post('/login',
@@ -41,7 +42,7 @@ router.post('/login',
           username: user.username
         };
         var secretOrPrivateKey = JWT_SECRET;
-        var options = {expiresIn: 60*60*24};
+        var options = {expiresIn: TOKEN_EXPIRE_TIME};
         jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
           if(err) return res.json(util.successFalse(err));
           res.json(util.successTrue(token));
