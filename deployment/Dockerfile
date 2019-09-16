@@ -1,4 +1,4 @@
-FROM node:carbon
+FROM node
 # Add an docker user, make work dir
 RUN adduser --disabled-password --gecos "" docker && \
   echo "docker ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers && \
