@@ -35,7 +35,7 @@ app.use('/api/users', require(path.join(__BASEDIR,'api/users')));
 app.use('/api/auth', require(path.join(__BASEDIR, '/api/auth')));
 
 // Server
-var port = 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log('listening on port:' + port);
 });
