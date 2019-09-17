@@ -100,5 +100,5 @@ userSchema.methods.authenticate = function (password) {
 };
 
 // model & export
-var User = mongoose.model('user',userSchema);
+var User = mongoose.model('User',userSchema);
 module.exports = User;
