@@ -61,6 +61,7 @@ mongodb:
   mongodbRootPassword: passw0rd
   db:
     name: users
+    collection: user    
     adminUser: dbadmin
     adminPassword: passw0rd
     nodeUser: admin
