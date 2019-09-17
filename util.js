@@ -2,7 +2,7 @@ var jwt = require('jsonwebtoken');
 
 var util = {};
 
-const  JWT_SECRET = process.env.JWT_SECRET || "MySecret";
+const  JWT_SECRET = process.env.JWT_SECRET || "MySecretKey";
 util.JWT_SECRET = JWT_SECRET;
 
 util.successTrue = function(data){

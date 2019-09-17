@@ -68,6 +68,11 @@ mongodb:
     nodePassword: passw0rd
   service:
     externalIPs: []
+  ingress:
+    enabled: true
+    hosts:
+    - name: mongodb.169.56.164.245.nip.io
+      path: /
   persistence:
     nfs:
       server: 169.56.164.245
