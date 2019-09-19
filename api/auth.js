@@ -11,6 +11,7 @@ const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME || 60*60*6;
 // login
 router.post('/login',
   function(req,res,next){
+	console.log("## /login -> validation check:"+req.body.username+"/"+req.body.password);
     var isValid = true;
     var validationError = {
       name:'ValidationError',
@@ -30,22 +31,33 @@ router.post('/login',
     else next();
   },
   function(req,res,next){
+	console.log("## /login -> do login");
     User.findOne({username:req.body.username})
     .select({password:1,username:1,name:1,email:1})
     .exec(function(err,user){
-      if(err) return res.json(util.successFalse(err));
-      else if(!user||!user.authenticate(req.body.password))
+      if(err) {
+    	  console.log("# error:get get the user:"+req.body.username);
+    	  return res.json(util.successFalse(err));
+      }
+      else if(!user||!user.authenticate(req.body.password)) 
          return res.json(util.successFalse(null,'Username or Password is invalid'));
       else {
         var payload = {
           _id : user._id,
           username: user.username
         };
+        console.log("# get user:"+user._id + ", "+user.username);
+        
         var secretOrPrivateKey = JWT_SECRET;
         var options = {expiresIn: TOKEN_EXPIRE_TIME*1};
         jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
-          if(err) return res.json(util.successFalse(err));
-          res.json(util.successTrue(token));
+        	console.log("# generate token:"+secretOrPrivateKey+", "+ options.expiresIn);
+        	if(err) {
+        		 console.log("# error !");
+        		return res.json(util.successFalse(err));
+        	}
+        	console.log("# token:"+token);
+        	res.json(util.successTrue(token));
         });
       }
     });
