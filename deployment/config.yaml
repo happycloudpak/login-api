@@ -21,7 +21,7 @@ env:
 service:
   type: ClusterIP
   port: 3001
-  externalIPs: []
+  externalIPs:  [ "169.56.164.245", "169.56.164.244", "169.56.164.254" ]
 
 ingress:
   enabled: true
