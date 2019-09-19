@@ -14,7 +14,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 env:
-  MONGO_DB_LOGIN_API: mongodb://admin:passw0rd@169.56.164.245:27018/users
+  MONGO_DB_LOGIN_API: mongodb://admin:passw0rd@169.56.164.245:27017/users
   JWT_SECRET: MySecretKey
   TOKEN_EXPIRE_TIME: 60*60*2
   
@@ -68,7 +68,7 @@ mongodb:
     nodePassword: passw0rd
   service:
     type: ClusterIP
-    port: 27018
+    port: 27017
     externalIPs: [ "169.56.164.245", "169.56.164.244", "169.56.164.254" ]
   ingress:
     enabled: false
