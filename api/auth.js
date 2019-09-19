@@ -6,7 +6,7 @@ var util     = require(path.join(__BASEDIR, 'util'));
 var jwt      = require('jsonwebtoken');
 
 const JWT_SECRET = util.JWT_SECRET;
-const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME || 60*60*6;
+const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME || 43200;
 
 // login
 router.post('/login',
