@@ -50,8 +50,9 @@ router.post('/login',
         
         var secretOrPrivateKey = JWT_SECRET;
         var options = {expiresIn: TOKEN_EXPIRE_TIME*1};
+        console.log("# token expire time:"+TOKEN_EXPIRE_TIME*1+"::"+options.expiresIn);
         jwt.sign(payload, secretOrPrivateKey, options, function(err, token){
-        	console.log("# generate token:"+secretOrPrivateKey+", "+ options.expiresIn);
+        	console.log("# generate token");
         	if(err) {
         		 console.log("# error !");
         		return res.json(util.successFalse(err));
