@@ -1,6 +1,13 @@
+global.__isDebugMode = true;
+
 var jwt = require('jsonwebtoken');
 
 var util = {};
+
+//console log
+util.log = function(msg) {
+	if(__isDebugMode) console.log(msg);
+}
 
 const JWT_SECRET = process.env.JWT_SECRET || "MySecretKey";
 util.JWT_SECRET = JWT_SECRET;
@@ -50,23 +57,18 @@ util.isLoggedin = function(req, res, next) {
 	if (!token)
 		return res.json(util.successFalse(null, 'token is required!'));
 	else {
-		console.log("## verify target token ==>" + token);
+		util.log("## verify target token ==>" + token);
 		jwt.verify(token, JWT_SECRET, function(err, decoded) {
 			if (err) {
-				console.log("error=>" + err.message);
+				util.log("error=>" + err.message);
 				return res.json(util.successFalse(err));
 			} else {
-				console.log("success to verify => " + decoded);
+				util.log("success to verify => " + decoded);
 				req.decoded = decoded;
 				next();
 			}
 		});
 	}
 };
-
-//console log
-util.log = function(msg) {
-	if(__isDebugMode) console.log(msg);
-}
 
 module.exports = util;

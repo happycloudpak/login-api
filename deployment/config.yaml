@@ -14,7 +14,7 @@ nameOverride: ""
 fullnameOverride: ""
 
 env:
-  MONGO_DB_LOGIN_API: mongodb://admin:passw0rd@169.56.164.245:27017/users
+  MONGO_DB_LOGIN_API: mongodb://admin:passw0rd@169.56.164.245:27017/db-users
   JWT_SECRET: MySecretKey
   TOKEN_EXPIRE_TIME: 21600
   

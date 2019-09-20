@@ -4,6 +4,7 @@ var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 global.__BASEDIR = __dirname + '/';
+var util = require(path.join(__BASEDIR, 'util'));
 
 // Database
 const connStr = process.env.MONGO_DB_LOGIN_API
@@ -22,7 +23,7 @@ const options = {
 	family : 4, // Use IPv4, skip trying IPv6
 	useMongoClient : true
 };
-console.log("->" + connStr);
+util.log("->" + connStr);
 mongoose.connect(connStr, options);
 var db = mongoose.connection;
 
