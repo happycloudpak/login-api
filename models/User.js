@@ -6,7 +6,7 @@ var userSchema = mongoose.Schema({
 	username : {
 		type : String,
 		required : [ true, 'Username is required!' ],
-		match : [ /^.{4,12}$/, 'Should be 4-12 characters!' ],
+		match : [ /^.{4,12}$/, 'Should be 4-12 characters(no space)!' ],
 		trim : true,
 		unique : true
 	},
@@ -18,7 +18,7 @@ var userSchema = mongoose.Schema({
 	name : {
 		type : String,
 		required : [ true, 'Name is required!' ],
-		match : [ /^[. ]{4,12}$/, 'Should be 4-12 characters!' ],
+		match : [ /^[\w+ ?]{4,30}$/, 'Should be 4-30 characters!' ],
 		trim : true,
 		unique : true
 	},
