@@ -60,7 +60,7 @@ mongodb:
   enabled: true
   mongodbRootPassword: passw0rd
   db:
-    name: users
+    name: db-users
     collection: users    
     adminUser: dbadmin
     adminPassword: passw0rd
