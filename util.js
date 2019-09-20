@@ -27,7 +27,7 @@ util.successFalse = function(err, message) {
 	return {
 		success : false,
 		message : message,
-		errors : (err) ? JSON.stringify(util.parseError(err)) : null,
+		errors : (err) ? util.parseError(err) : null,
 		data : null
 	};
 };
