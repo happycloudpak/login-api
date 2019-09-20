@@ -64,4 +64,9 @@ util.isLoggedin = function(req, res, next) {
 	}
 };
 
+//console log
+util.log = function(msg) {
+	if(__isDebugMode) console.log(msg);
+}
+
 module.exports = util;

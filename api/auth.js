@@ -10,7 +10,7 @@ const TOKEN_EXPIRE_TIME = process.env.TOKEN_EXPIRE_TIME || 43200;
 
 // login
 router.post('/login', function(req, res, next) {
-	console.log("## /login -> validation check:" + req.body.username + "/"
+	util.log("## /login -> validation check:" + req.body.username + "/"
 			+ req.body.password);
 	var isValid = true;
 	var validationError = {
@@ -36,7 +36,7 @@ router.post('/login', function(req, res, next) {
 	else
 		next();
 }, function(req, res, next) {
-	console.log("## /login -> do login");
+	util.log("## /login -> do login");
 	User.findOne({
 		username : req.body.username
 	}).select({
@@ -67,16 +67,16 @@ router.post('/login', function(req, res, next) {
 					var options = {
 						expiresIn : TOKEN_EXPIRE_TIME * 1
 					};
-					console.log("# token expire time:" + TOKEN_EXPIRE_TIME * 1
+					util.log("# token expire time:" + TOKEN_EXPIRE_TIME * 1
 							+ "::" + options.expiresIn);
 					jwt.sign(payload, secretOrPrivateKey, options, function(
 							err, token) {
-						console.log("# generate token");
+						util.log("# generate token");
 						if (err) {
-							console.log("# error !");
+							util.log("# error !");
 							return res.json(util.successFalse(err));
 						}
-						console.log("# token:" + token);
+						util.log("# token:" + token);
 						res.json(util.successTrue(token));
 					});
 				}
