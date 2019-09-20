@@ -18,9 +18,8 @@ var userSchema = mongoose.Schema({
 	name : {
 		type : String,
 		required : [ true, 'Name is required!' ],
-		match : [ /^[\w+ ?]{4,30}$/, 'Should be 4-30 characters!' ],
-		trim : true,
-		unique : true
+		trim : false,
+		unique : false
 	},
 	email : {
 		type : String,
